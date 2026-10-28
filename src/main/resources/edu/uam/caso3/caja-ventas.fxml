@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="edu.uam.caso3.CajaController" spacing="14" prefWidth="700" prefHeight="740">
+    <fx:define>
+        <Background fx:id="fondoTarjeta">
+            <fills>
+                <BackgroundFill fill="WHITE">
+                    <radii><CornerRadii radius="8"/></radii>
+                    <insets><Insets top="0" right="0" bottom="0" left="0"/></insets>
+                </BackgroundFill>
+            </fills>
+        </Background>
+    </fx:define>
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+    <background>
+        <Background>
+            <fills>
+                <BackgroundFill fill="#f0f3f6">
+                    <radii><CornerRadii radius="0"/></radii>
+                    <insets><Insets top="0" right="0" bottom="0" left="0"/></insets>
+                </BackgroundFill>
+            </fills>
+        </Background>
+    </background>
+    <children>
+        <Label text="CASO 3 · APLICACIONES DE ESCRITORIO" textFill="#367b8b">
+            <font><Font name="Segoe UI Bold" size="11"/></font>
+        </Label>
+        <Label text="Caja de ventas" textFill="#20374d">
+            <font><Font name="Segoe UI Bold" size="26"/></font>
+        </Label>
+        <Label text="3 vendedores · 5 ventas por vendedor · C$100 por venta" textFill="SLATEGRAY"/>
+
+        <!-- Resultados principales -->
+        <HBox spacing="14">
+            <VBox spacing="8" prefWidth="220" maxWidth="Infinity" HBox.hgrow="ALWAYS" background="$fondoTarjeta">
+                <padding><Insets top="18" right="18" bottom="18" left="18"/></padding>
+                <Label text="Ventas confirmadas" textFill="SLATEGRAY"/>
+                <Label fx:id="total" text="0" textFill="#20374d">
+                    <font><Font name="Segoe UI Bold" size="28"/></font>
+                </Label>
+            </VBox>
+            <VBox spacing="8" prefWidth="220" maxWidth="Infinity" HBox.hgrow="ALWAYS" background="$fondoTarjeta">
+                <padding><Insets top="18" right="18" bottom="18" left="18"/></padding>
+                <Label text="Recaudación total" textFill="SLATEGRAY"/>
+                <Label fx:id="dinero" text="C$0" textFill="#20374d">
+                    <font><Font name="Segoe UI Bold" size="28"/></font>
+                </Label>
+            </VBox>
+        </HBox>
+
+        <!-- Avance general y por vendedor -->
+        <VBox spacing="12" background="$fondoTarjeta">
+            <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+            <Label text="Avance general"/>
+            <ProgressBar fx:id="progreso" progress="0" maxWidth="Infinity" prefHeight="20"/>
+            <Label fx:id="avance" text="0 / 15 ventas"/>
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label fx:id="vendedor1" text="Vendedor 1   0 / 5" minWidth="150"/>
+                <ProgressBar fx:id="barra1" progress="0" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label fx:id="vendedor2" text="Vendedor 2   0 / 5" minWidth="150"/>
+                <ProgressBar fx:id="barra2" progress="0" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label fx:id="vendedor3" text="Vendedor 3   0 / 5" minWidth="150"/>
+                <ProgressBar fx:id="barra3" progress="0" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Button fx:id="iniciar" text="Iniciar simulación" prefWidth="150" prefHeight="34"
+                    defaultButton="true" onAction="#iniciar"/>
+            <Button fx:id="cancelar" text="Cancelar" prefWidth="110" prefHeight="34"
+                    disable="true" onAction="#cancelar"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="estado" text="Listo" textFill="#367b8b">
+                <font><Font name="Segoe UI Bold" size="14"/></font>
+            </Label>
+        </HBox>
+        <Label text="Registro de operaciones"/>
+        <TextArea fx:id="registro" editable="false" prefRowCount="7" VBox.vgrow="ALWAYS"
+                  promptText="Aquí aparecerán las operaciones al iniciar la simulación.">
+            <font><Font name="Consolas" size="12"/></font>
+        </TextArea>
+        <Label text="Al finalizar puedes iniciar una nueva simulación." textFill="SLATEGRAY">
+            <font><Font name="Segoe UI" size="11"/></font>
+        </Label>
+    </children>
+</VBox>
